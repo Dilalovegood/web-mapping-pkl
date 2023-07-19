@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Peta Persebaran Mixue di Sukabumi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="docs/images/favicon.ico"
+    />
+    <style>
+      #map {
+        height: 400px;
+        width: 700px;
+        display: flex;
+        justify-content: center;
+      }
+      .leaflet-popup-content {
+        width: 100px;
+        text-align: center;
+      }
+
+      .leaflet-popup-content b {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .leaflet-popup-content br {
+        margin-bottom: 10px;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  </head>
+
+  <body>
+    <div id="map"></div>
+  </body>
+
+  <script>
+    var map = L.map("map").setView([-6.9181, 106.9267], 12);
+
+    // Tambahkan layer peta dari OpenStreetMap
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Tambahkan penanda mixue
+    var mixueIcon = L.icon({
+      iconUrl:
+        "https://w7.pngwing.com/pngs/601/342/png-transparent-logo-mixue.png",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    });
+
+    // script.js
+    // Tambahkan marker dan pop-up
+    var mixueLocations = [
+      {
+        name: "Mixue Cisaat",
+        location: [-6.906988186768024, 106.89372140539915],
+        address:
+          "Jl. Nasional III No.116, Sukamanah, Kec. Cisaat, Kota Sukabumi, Jawa Barat 43115",
+      },
+      {
+        name: "Mixue PGRI",
+        location: [-6.917724245918398, 106.93097192347649],
+        address:
+          "Jl. PGRI No.18-6, Gunungparang, Kec. Cikole, Kota Sukabumi, Jawa Barat 43111",
+      },
+      {
+        name: "Mixue Toserba Selamat Sukabumi",
+        location: [-6.916531362503325, 106.93371850545454],
+        address:
+          "Jl. R. E. Martadinata, Kebonjati, Kec. Cikole, Kota Sukabumi, Jawa Barat",
+      },
+      {
+        name: "Mixue Cibolang Kaler",
+        location: [-6.901705274527671, 106.8691738289703],
+        address:
+          "3VV9+QM2, Cibolang Kaler, Kec. Cisaat, Kabupaten Sukabumi, Jawa Barat 43155",
+      },
+      {
+        name: "Mixue Cipoho",
+        location: [-6.929312099349031, 106.9249637753995],
+        address:
+          "Jl. Pelabuhan II No.147, Cikondang, Kec. Warudoyong, Kota Sukabumi, Jawa Barat 43131",
+      },
+      {
+        name: "Mixue Bhayangkara",
+        location: [-6.909203584020467, 106.9311435848501],
+        address:
+          "Gg. Kaswari No.1, Selabatu, Kec. Cikole, Kota Sukabumi, Jawa Barat 43114",
+      },
+      {
+        name: "MIXUE CIAUL",
+        location: [-6.917724245918398, 106.94470483336673],
+        address:
+          "Jl. R.A. Kosasih No.163, Subangjaya, Kec. Cikole, Kota Sukabumi, Jawa Barat 43116",
+      },
+      {
+        name: "MIXUE SUKARAJA",
+        location: [-6.913975173612558, 106.97096902353185],
+        address:
+          "3XMC+28P, Jl. Raya Sukaraja, Ruko E (seberang puskesmas, Pasirhalang, Kec. Sukaraja, Kabupaten Sukabumi",
+      },
+      {
+        name: "Mixue Cibadak Sukabumi",
+        location: [-6.888274424092755, 106.78322965195784],
+        address:
+          "Jl. Surya Kencana No.2, Cibadak, Kec. Cibadak, Kabupaten Sukabumi, Jawa Barat 43351",
+      },
+      {
+        name: "Mixue Baros Sukabumi",
+        location: [-6.960305406897543, 106.93856594508968],
+        address:
+          "Jl. Tangkil - Agrabinta, Baros, Kec. Baros, Kabupaten Sukabumi, Jawa Barat 43161",
+      },
+
+      // Tambahkan lokasi Mixue lainnya di sini
+    ];
+
+    mixueLocations.forEach(function (location) {
+      var marker = L.marker(location.location, { icon: mixueIcon }).addTo(map);
+      marker.bindPopup("<b>" + location.name + "</b><br>" + location.address);
+    });
+  </script>
+</html>
